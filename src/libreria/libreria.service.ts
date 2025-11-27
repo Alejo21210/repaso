@@ -37,4 +37,24 @@ export class LibreriasService {
     if (!libreria) return null;
     return this.libreriaRepository.remove(libreria);
   }
+
+  calcularPromedio(costos: number[], limite: number) {
+  let suma = 0;
+  let contador = 0;
+  const listaFiltrada: number[] = [];
+
+  for (const costo of costos) {
+    if (costo <= limite) {
+      suma += costo;
+      listaFiltrada.push(costo);
+      contador++;
+    }
+  }
+  const promedio = contador > 0 ? suma / contador : 0;
+  return {
+    listaFiltrada: listaFiltrada,
+    suma: suma,
+    promedio: promedio,
+  };
+}
 }

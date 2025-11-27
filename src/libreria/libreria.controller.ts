@@ -31,4 +31,9 @@ export class LibreriasController {
   remove(@Param('id') id: string) {
     return this.libreriasService.remove(id);
   }
+
+  @Post('calculo-promedio-costo')
+  calcularPromedio(@Body() body:{ costos: number[], limite: number}) {
+    return this.libreriasService.calcularPromedio(body.costos, body.limite)
+  }
 }
